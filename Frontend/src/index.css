@@ -1,0 +1,92 @@
+:root {
+    --primary: #027fb1;
+    --secundary: #404040;
+    --text-white: #F4F4F4;
+}
+
+h1, h2, h3, h4 {
+    color: var(--secundary);
+}
+
+.link {
+    text-decoration: none;
+    color: var(--secundary);
+    font-weight: 400;
+    transition: color ease-in-out .5s;
+}
+.link:hover {
+    color: var(--primary);
+}
+.link:first-of-type {
+    font-weight: 600;
+}
+
+.mainContainer {
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+header {
+    background-color: #ffffff;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    top: 0;
+    position: sticky;
+    z-index: 1;
+}
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 7px 0;
+}
+.header .logo {
+    font-size: 30px;
+    color: var(--primary);
+}
+.header nav {
+    display: flex;
+    gap: 20px;
+}
+
+footer {
+    background-color: var(--secundary);
+    padding: 50px 0;
+}
+.footer {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+.footer nav {
+    display: flex;
+    flex-direction: column;
+    text-align: end;
+}
+.footer nav .link{
+    color: var(--text-white);
+    font-size: 16px;
+    transition: all ease-in-out .2s;
+}
+.footer nav .link:hover {
+    color: var(--primary);
+}
+.infoFooter {
+    color: var(--text-white);
+}
+.infoFooter p {
+    margin: 0;
+}
+.infoFooter .contacto {
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: 700;
+}
+.infoFooter .infoContacto {
+    font-weight: 300;
+}
+.infoContacto span {
+    font-weight: 600;
+}
+
+.active {
+    color: var(--primary);
+}
