@@ -1,0 +1,52 @@
+.formularioContacto {
+    display: flex;
+    flex-direction: column;
+}
+.singleContainerContact {
+    padding: 10px;
+}
+.singleContainerContact p {
+    text-align: start;
+}
+.formContacto {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.formContacto textarea {
+    height: 180px;
+}
+.infoContacto {
+    background-color: var(--secundary);
+    border-radius: 10px;
+    color: var(--text-white);
+}
+.inputsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.inputContainer {
+    display: flex;
+    flex-direction: column;
+}
+.contactoIcons {
+    display: flex;
+    gap: 10px;
+}
+.contactoIcons svg {
+    width: 25px;
+}
+@media (min-width: 768px) {
+    .formularioContacto {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    } 
+    .singleContainerContact {
+        padding: 20px;
+    }
+    .inputsContainer {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

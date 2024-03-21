@@ -1,4 +1,4 @@
-import styles from '../styles/main.module.css';
+import styles from '../styles/servicios.module.css';
 
 const Servicio = ({titulo, descripcion, link, imageUrl}) => {
   return (
