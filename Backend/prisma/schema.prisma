@@ -1,0 +1,113 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Service {
+  id Int @id @default(autoincrement())
+  name String 
+  description String
+  plan_service PlanService[]
+}
+
+model Plan {
+  id Int @id @default(autoincrement())
+  name String 
+  description String
+  price Float
+  icon_url String 
+  active Boolean @default(true)
+  duration Int
+  plan_service PlanService[]
+}
+
+model PlanService {
+  id Int @id @default(autoincrement())
+  service_id Int 
+  plan_id Int  @unique
+  plan Plan @relation(fields: [plan_id], references: [id])
+  service Service @relation(fields: [service_id], references: [id])
+  sales Sale[]
+  suscriptions Suscription[]
+
+  @@unique([service_id, plan_id])
+} 
+
+model Rol {
+  id Int @id @default(autoincrement())
+  name String
+  description String?
+  users User[]
+}
+
+model User {
+  id Int @id @default(autoincrement())
+  name String 
+  last_name String 
+  email String 
+  phone_number String
+  password String 
+  active Boolean
+  rol_id Int
+  rol Rol @relation(fields: [rol_id], references: [id])
+  sales Sale[]
+  suscriptions Suscription[]
+}
+
+model SaleStatus {
+  id Int @id @default(autoincrement())
+  name String
+  sales Sale[]
+}
+
+model Sale {
+  id Int @id @default(autoincrement())
+  plan_service_id Int
+  user_id Int 
+  creation_date DateTime
+  total Float 
+  observation String 
+  status_id Int
+  plan_service PlanService @relation(fields: [plan_service_id], references: [id])
+  user User @relation(fields: [user_id], references: [id])
+  status SaleStatus @relation(fields: [status_id], references: [id])
+}
+
+model Suscription {
+  id Int @id @default(autoincrement())
+  plan_service_id Int
+  user_id Int 
+  start_date DateTime 
+  end_date DateTime
+  total Float 
+  active Boolean
+  api_key String 
+  secret_key String
+  plan_service PlanService @relation(fields: [plan_service_id], references: [id])
+  user User @relation(fields: [user_id], references: [id])
+}
+
+model PortFolio {
+  id Int @id @default(autoincrement())
+  name String
+  description String 
+  url String?
+  images PortFolioImage[]
+}
+
+model PortFolioImage {
+  id Int @id @default(autoincrement())
+  image_url String 
+  portfolio_id Int 
+  portfolio PortFolio @relation(fields: [portfolio_id], references: [id])
+}
