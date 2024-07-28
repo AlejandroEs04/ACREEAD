@@ -4,6 +4,7 @@ import serviceRoutes from './routes/ServiceRoutes'
 import planRoutes from './routes/PlanRoutes'
 import planServiceRoutes from './routes/PlanServiceRoutes'
 import rolRoutes from './routes/RolRoutes'
+import userRoutes from './routes/UserRoutes'
 
 dotenv.config();
 
@@ -14,6 +15,7 @@ app.use('/api/service', serviceRoutes)
 app.use('/api/plan', planRoutes)
 app.use('/api/plan_service', planServiceRoutes)
 app.use('/api/rol', rolRoutes)
+app.use('/api/user', userRoutes)
 
 const PORT = process.env.PORT || 7000;
 
