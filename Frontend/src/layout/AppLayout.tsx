@@ -4,7 +4,7 @@ import HeaderSeccion from "../components/HeaderSeccion"
 
 const AppLayout = () => {
   return (
-    <div>
+    <>
       <Header />
 
       <HeaderSeccion />
@@ -12,7 +12,7 @@ const AppLayout = () => {
       <main className='mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 my-10'>
         <Outlet />
       </main>
-    </div>
+    </>
   )
 }
 

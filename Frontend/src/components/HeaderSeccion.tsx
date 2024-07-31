@@ -13,7 +13,7 @@ const HeaderSeccion = () => {
 
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <div className="mx-auto max-w-2xl lg:mx-0">
-                <h2 className="text-4xl font-normal tracking-tight text-white sm:text-6xl">Welcome to <span className="font-bold">Acreead</span></h2>
+                <h2 className="text-4xl font-normal tracking-tight text-white sm:text-6xl">Welcome to <span className="font-bold text-sky-500">Acreead</span></h2>
                 <p className="mt-6 text-lg leading-8 text-gray-100">Currently, we live in a globalized and digital world, all businesses and companies have to be working with technologies and being updated to new trends.</p>
                 <p className="mt-6 text-lg leading-8 text-gray-100">Acread is a company dedicated to innovative and efficient solutions using technologies, our mission is to provide companies with the opportunity to grow and expand their business to the virtual world.</p>
             </div>
