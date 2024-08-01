@@ -1,6 +1,6 @@
 import { Request, Response } from 'express'
 import { PrismaClient } from '@prisma/client'
-import { User } from 'types'
+import { User, User_Signup } from 'types'
 import hashingPassword from '../utils/hashingPassword'
 
 const prisma = new PrismaClient()
@@ -52,7 +52,10 @@ export const getAll = async(req: Request, res: Response) => {
 }
 
 export const createOne = async(req: Request, res: Response) => {
-    const user : User = req.body;
+    const user : User_Signup = req.body;
+
+    console.log(user);
+    return
 
     try {
         if(await prisma.user.findFirst({ where: { email: user.email } })) {
@@ -69,8 +72,10 @@ export const createOne = async(req: Request, res: Response) => {
 
         user.password = await hashingPassword(user.password)
 
+        const { password_repeat, ...userCreate } = user
+
         await prisma.user.create({
-            data: user
+            data: userCreate
         })
 
         return res.status(200).json({

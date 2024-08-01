@@ -35,3 +35,14 @@ export type User = {
     active: boolean, 
     rol_id: number
 }
+
+export type User_Signup = {
+    name: string, 
+    last_name: string, 
+    email: string, 
+    phone_number: string, 
+    password: string, 
+    password_repeat: string,
+    active: boolean, 
+    rol_id: number
+}
