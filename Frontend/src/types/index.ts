@@ -37,7 +37,7 @@ export type User = {
     rol_id: number
 }
 
-export type UserAuth = {
+export type UserAuth     = {
     id: number, 
     name: string, 
     last_name: string, 

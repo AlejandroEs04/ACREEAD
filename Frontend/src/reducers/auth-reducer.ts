@@ -1,7 +1,7 @@
 import { Alert, Signup_Form, UserAuth } from "../types";
 
 export type AuthActions = 
-    { type: 'signup', payload: { signupForm : Signup_Form } }
+    { type: 'setAlerta', payload: { type: number, msg: string } }
 
 export type AuthState = {
     auth: UserAuth | null
@@ -17,8 +17,11 @@ export const AuthReducer = (
     state: AuthState = initialState, 
     actions: AuthActions
 ) => {
-    if(actions.type === 'signup') {
-        
+    if(actions.type === 'setAlerta') {
+        return {
+            ...state, 
+            alert: { type: actions.payload.type, msg: actions.payload.msg }
+        }
     }
 
     return state

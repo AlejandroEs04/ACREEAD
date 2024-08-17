@@ -1,6 +1,8 @@
 import { useState, ChangeEvent } from 'react'
 import { Link } from 'react-router-dom'
 import InputContainer from '../components/InputContainer'
+import AlertContainer from '../components/AlertContainer'
+import { useAuth } from '../hooks/useAuth'
 
 const SignUp = () => {
     const [signupForm, setSignupForm] = useState({
@@ -10,6 +12,8 @@ const SignUp = () => {
         password: '', 
         repeat_password: ''
     })
+
+    const {  } = useAuth();
 
     const handleChange = (e : ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target
@@ -21,13 +25,18 @@ const SignUp = () => {
     }
 
     return (
-        <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+        <>
             <div className="sm:mx-auto sm:w-full sm:max-w-sm">
                 <img className="mx-auto h-10 w-auto" src="../AcreeadIconBlack.svg" alt="Acreead Logo" />
                 <h2 className="mt-3 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Create a new account</h2>
             </div>
 
             <div className="mt-5 sm:mx-auto sm:w-full sm:max-w-sm">
+                <AlertContainer 
+                    type={2}
+                    msg='Hubo un error'
+                />
+
                 <form className="space-y-6">
                     <InputContainer name='name' label='Your Name' placeholder='Name' value={signupForm.name} handleChange={handleChange} />
                     <InputContainer name='last_name' label='Your Last Name' placeholder='Last Name' value={signupForm.last_name} handleChange={handleChange} />
@@ -67,7 +76,7 @@ const SignUp = () => {
                 <p className="mt-10 text-center text-sm text-gray-500">Do you have account? <Link to={`/auth/login`} className="font-semibold leading-6 text-sky-600 hover:text-sky-700">Login</Link></p>
                 <p className="mt-1 text-center text-sm text-gray-500">Did you forgot your password? <Link to={`/auth/forgot-password`} className="font-semibold leading-6 text-sky-600 hover:text-sky-700">Forgot Password</Link></p>
             </div>
-        </div>
+        </>
     )
 }
 
