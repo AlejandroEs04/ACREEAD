@@ -6,10 +6,23 @@ const prisma = new PrismaClient()
 
 export const getAll = async(req: Request, res: Response) => {
     try {
-        const services = await prisma.service.findMany()
+        const services = await prisma.service.findMany({
+            include: {
+                plan_service: {
+                    select: {
+                        plan: true
+                    }
+                }
+            }
+        })
+
+        const result = services.map(service => ({
+            ...service,
+            plans: service.plan_service.map(servicePlan => servicePlan.plan),
+        }));
 
         return res.status(201).json({
-            services
+            services: result
         })
     } catch (error) {
         console.log(error)
@@ -21,6 +34,9 @@ export const getAll = async(req: Request, res: Response) => {
 
 export const createOne = async(req: Request, res: Response) => {
     const service : Service = req.body
+
+    console.log(service)
+    return
 
     try {
         await prisma.service.create({

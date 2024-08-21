@@ -2,7 +2,14 @@ export type Service = {
     id: number, 
     name: string, 
     description: string, 
-    plans : Plan[]
+    plans: Plan[]
+}
+
+export type Plan_Service_Obj = {
+    id: number
+    plan_id: number
+    service_id: number
+    plan: Plan 
 }
 
 export type Plan = {
@@ -68,3 +75,20 @@ export type Alert = {
     msg: string
     type: number
 }
+
+export type Link = {
+    pathname: string
+    name: string
+    icon?: string
+}
+
+export type Header = {
+    name: string
+}
+
+export type Column = {
+    name: string
+}
+
+export type Columns = Column[]
+export type Headers = Header[]

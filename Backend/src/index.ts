@@ -1,5 +1,6 @@
 import express from 'express'
 import dotenv from 'dotenv'
+import cors from 'cors'
 import serviceRoutes from './routes/ServiceRoutes'
 import planRoutes from './routes/PlanRoutes'
 import planServiceRoutes from './routes/PlanServiceRoutes'
@@ -9,6 +10,15 @@ import userRoutes from './routes/UserRoutes'
 dotenv.config();
 
 const app = express();
+
+const corsOptions = {
+    origin: process.env.FRONTEND_URL,
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization'], 
+    credentials: true,
+}
+
+app.use(cors(corsOptions));
 
 app.use(express.json());
 app.use('/api/service', serviceRoutes)

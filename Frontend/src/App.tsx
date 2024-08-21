@@ -6,6 +6,10 @@ import Login from "./pages/Login"
 import Services from "./pages/Services"
 import Service from "./pages/Service"
 import Portfolio from "./pages/Portfolio"
+import Admin from "./pages/Admin"
+import AdminLayout from "./layout/AdminLayout"
+import AdminServices from "./pages/AdminServices"
+import CrudService from "./pages/CrudService"
 
 function App() {
   return (
@@ -21,6 +25,12 @@ function App() {
         <Route path="/auth" element={<AppLayout />}>
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<SignUp />} />
+        </Route>
+
+        <Route path="/admin" element={<AdminLayout />}>
+          <Route index element={<Admin />} />
+          <Route path="services" element={<AdminServices />} />
+          <Route path="services/create" element={<CrudService />} />
         </Route>
       </Routes>
     </BrowserRouter>

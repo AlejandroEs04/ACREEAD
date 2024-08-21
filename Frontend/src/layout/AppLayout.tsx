@@ -3,6 +3,30 @@ import { Outlet, useLocation } from "react-router-dom"
 import Header from "../components/Header"
 import HeaderSeccion from "../components/HeaderSeccion"
 import Footer from "../components/Footer";
+import { Link } from "../types";
+
+const links : Link[] = [
+  {
+    name: 'Main', 
+    pathname: '/'
+  }, 
+  {
+    name: 'Services', 
+    pathname: '/services'
+  },
+  {
+    name: 'Portfolio', 
+    pathname: '/portfolio'
+  },
+  {
+    name: 'About us', 
+    pathname: '/about-us'
+  },
+  {
+    name: 'Contact Us', 
+    pathname: '/contact-us'
+  },
+]
 
 const AppLayout = () => {
   const { pathname } = useLocation();
@@ -33,6 +57,7 @@ const AppLayout = () => {
     <>
       <Header 
         changeBackground={changeBackground}
+        links={links}
       />
 
       {pathname === '/' && <HeaderSeccion ref={headerSeccionRef} />}

@@ -35,6 +35,7 @@ const ServiceSelectorContainer = () => {
         <div>
           {services.map(service => service.plans.length > 0 && (
             <button 
+              key={service.id}
               type="button" 
               onClick={() => handleChangeServiceId(service.id)}
               className="flex justify-between items-center last-of-type:rounded-bl-xl border-t px-5 py-2 hover:bg-slate-50 w-full"
