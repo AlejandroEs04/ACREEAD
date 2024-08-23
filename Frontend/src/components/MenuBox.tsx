@@ -10,7 +10,10 @@ type MenuBoxProps = {
 
 const MenuBox = ({ name, pathname, to, from, count } : MenuBoxProps) => {
     return (
-        <Link to={pathname} className={`bg-gradient-to-r from-${from} to-${to} text-white w-48 h-24 rounded shadow-xl flex justify-center items-center px-10 gap-2`}>
+        <Link 
+            to={pathname} 
+            className={`bg-gradient-to-r ${from} ${to} text-white w-48 h-24 rounded shadow-xl flex justify-center items-center px-10 gap-2`}
+        >
             <div className="text-start w-full">
                 <div className="flex justify-between items-end">
                     {name === 'Notifications' && (

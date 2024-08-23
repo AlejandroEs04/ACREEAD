@@ -10,6 +10,7 @@ import Admin from "./pages/Admin"
 import AdminLayout from "./layout/AdminLayout"
 import AdminServices from "./pages/AdminServices"
 import CrudService from "./pages/CrudService"
+import AdminPlans from "./pages/AdminPlans"
 
 function App() {
   return (
@@ -31,6 +32,8 @@ function App() {
           <Route index element={<Admin />} />
           <Route path="services" element={<AdminServices />} />
           <Route path="services/create" element={<CrudService />} />
+          <Route path="plans" element={<AdminPlans />} />
+          <Route path="plans/create" element={<CrudService />} />
         </Route>
       </Routes>
     </BrowserRouter>

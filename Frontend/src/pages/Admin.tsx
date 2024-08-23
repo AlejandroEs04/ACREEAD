@@ -10,22 +10,22 @@ const Admin = () => {
                 <MenuBox 
                     name="Notifications"
                     pathname="/admin/notifications"
-                    to="blue-700"
-                    from="blue-600"
+                    to="to-blue-700"
+                    from="from-blue-600"
                     count={0}
                 />
                 <MenuBox 
                     name="Projects"
                     pathname="/admin/projects"
-                    to="red-700"
-                    from="red-600"
+                    to="to-red-700"
+                    from="from-red-600"
                     count={0}
                 />
                 <MenuBox 
                     name="Charts"
                     pathname="/admin/charts"
-                    to="orange-700"
-                    from="orange-600"
+                    to="from-orange-700"
+                    from="to-orange-600"
                     count={0}
                 />
             </div>

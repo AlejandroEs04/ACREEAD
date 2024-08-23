@@ -5,6 +5,7 @@ import { Service } from '../types'
 import { useAdmin } from '../hooks/useAdmin'
 import { currencyFormat } from '../helpers'
 import AlertText from '../components/AlertText'
+import BackButton from '../components/BackButton'
 
 const serviceInitialState = {
     id: 0,
@@ -60,6 +61,7 @@ const CrudService = () => {
 
     return (
         <>
+            <BackButton />
             <div className='flex flex-col gap-1 md:flex-row md:justify-between md:items-end'>
                 <div>
                     <h1 className="text-4xl font-bold">Create Services</h1>
