@@ -1,15 +1,13 @@
-import { createContext, Dispatch, ReactNode, useReducer, FormEvent, useState } from "react"
+import { createContext, Dispatch, ReactNode, useReducer } from "react"
 import { AuthActions, AuthReducer, AuthState, initialState } from "../reducers/auth-reducer";
-import { Signup_Form } from "../types";
 import axios from "axios";
+import { Signup_Form } from "../types";
 
 type AuthContextProps = {
     state: AuthState, 
     dispatch: Dispatch<AuthActions>
-    handleLogin: (e: FormEvent<HTMLFormElement>) => Promise<void>
-    handleSignUp: (e: FormEvent<HTMLFormElement>) => Promise<void>
-    signupForm : Signup_Form
-    setSignupForm: Dispatch<React.SetStateAction<Signup_Form>>
+    handleLogin: (password: string, email: string) => Promise<void>
+    handleSignUp: (user: Signup_Form) => Promise<void>
 }
 
 type AuthProviderProps = {
@@ -20,35 +18,27 @@ export const AuthContext = createContext<AuthContextProps>(null!);
 
 export const AuthProvider = ({ children } : AuthProviderProps) => {
     const [state, dispatch] = useReducer(AuthReducer, initialState);
-    const [signupForm, setSignupForm] = useState<Signup_Form>({
-        name: '', 
-        last_name: '', 
-        email: '', 
-        password: '', 
-        repeat_password: ''
-    })
 
-    const handleLogin = async(e : FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-
+    const handleLogin = async(password: string, email: string) => {
         try {
             const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/auth`)
 
-            console.log(data)
+            console.log(email, password, data)
         } catch (error) {
             
         }
     }
     
-    const handleSignUp = async(e : FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-
+    const handleSignUp = async(user: Signup_Form) => {
         try {
-            const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/user`)
-            
-            console.log(data)
-        } catch (error) {
-            console.log(error)
+            const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/user`, user)
+            dispatch({ type: 'setAlerta', payload: { type: 3, msg: data.msg } })
+        } catch (err : any) {
+            dispatch({ type: 'setAlerta', payload: { type: 1, msg: err.response.data.msg } })
+        } finally {
+            setTimeout(() => {
+                dispatch({ type: 'reset_alert' })
+            }, 4000)
         }
     }
 
@@ -58,9 +48,7 @@ export const AuthProvider = ({ children } : AuthProviderProps) => {
                 state, 
                 dispatch, 
                 handleLogin, 
-                handleSignUp, 
-                signupForm, 
-                setSignupForm
+                handleSignUp
             }}
         >
             {children}

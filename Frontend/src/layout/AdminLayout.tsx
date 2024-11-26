@@ -59,7 +59,7 @@ const AdminLayout = () => {
             </div>
 
             <div className="flex h-screen">
-                <aside className="w-0 hidden lg:block lg:w-1/5 xl:w-1/6 bg-white p-6 shadow-xl">
+                <aside className="w-0 hidden lg:block lg:w-1/5 xl:w-1/6 bg-white p-6 py-8 shadow-xl">
                     <div className="px-2">
                         <img className="h-8 w-auto" src={`/AcreeadIconBlack.svg`} alt="Your Company" />
                     </div>
@@ -74,7 +74,7 @@ const AdminLayout = () => {
                     </div>
                 </aside>
 
-                <main className="px-2 sm:px-6 lg:px-8 my-5 w-full lg:w-4/5 xl:w-5/6">
+                <main className="px-2 sm:px-6 lg:px-8 my-8 w-full lg:w-4/5 xl:w-5/6">
                     <Outlet />
                 </main>
             </div>

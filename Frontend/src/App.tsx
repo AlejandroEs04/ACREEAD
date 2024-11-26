@@ -11,6 +11,7 @@ import AdminLayout from "./layout/AdminLayout"
 import AdminServices from "./pages/AdminServices"
 import CrudService from "./pages/CrudService"
 import AdminPlans from "./pages/AdminPlans"
+import CrudPlan from "./pages/CrudPlan"
 
 function App() {
   return (
@@ -33,7 +34,7 @@ function App() {
           <Route path="services" element={<AdminServices />} />
           <Route path="services/create" element={<CrudService />} />
           <Route path="plans" element={<AdminPlans />} />
-          <Route path="plans/create" element={<CrudService />} />
+          <Route path="plans/create" element={<CrudPlan />} />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -54,9 +54,6 @@ export const getAll = async(req: Request, res: Response) => {
 export const createOne = async(req: Request, res: Response) => {
     const user : User_Signup = req.body;
 
-    console.log(user);
-    return
-
     try {
         if(await prisma.user.findFirst({ where: { email: user.email } })) {
             return res.status(409).json({
@@ -72,7 +69,7 @@ export const createOne = async(req: Request, res: Response) => {
 
         user.password = await hashingPassword(user.password)
 
-        const { password_repeat, ...userCreate } = user
+        const { repeat_password, ...userCreate } = user
 
         await prisma.user.create({
             data: userCreate

@@ -42,7 +42,7 @@ export type User_Signup = {
     email: string, 
     phone_number: string, 
     password: string, 
-    password_repeat: string,
+    repeat_password: string,
     active: boolean, 
     rol_id: number
 }

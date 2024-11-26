@@ -2,10 +2,10 @@ import { useState, ChangeEvent } from 'react'
 import InputContainer from '../components/InputContainer'
 import TextareaContainer from '../components/TextareaContainer'
 import { Service } from '../types'
-import { useAdmin } from '../hooks/useAdmin'
 import { currencyFormat } from '../helpers'
 import AlertText from '../components/AlertText'
 import BackButton from '../components/BackButton'
+import { useClient } from '../hooks/useClient'
 
 const serviceInitialState = {
     id: 0,
@@ -19,7 +19,7 @@ const CrudService = () => {
     const [service, setService] = useState<Service>(serviceInitialState)
     const [planId, setPlanId] = useState(0)
     const [alertText, setAlertText] = useState({ msg: '', type: 0 })
-    const { state } = useAdmin()
+    const { state } = useClient()
 
     const handleChange = (e : ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement> | ChangeEvent<HTMLSelectElement>) => {
         const { name, value } = e.target
@@ -69,7 +69,7 @@ const CrudService = () => {
                 </div>
 
                 <div>
-                    <button className='bg-sky-600 text-white px-2 py-1 rounded w-full'>Save Servicio</button>
+                    <button className='bg-sky-600 text-white px-2 py-1 rounded w-full'>Save Service</button>
                 </div>
             </div>
 

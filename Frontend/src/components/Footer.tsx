@@ -6,7 +6,7 @@ const Footer = () => {
             <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                     <div className="flex flex-col items-center sm:items-start">
-                        <img src="/AcreeadLogoWhite.png" alt="Logo de Acreead" className="max-w-56" />
+                        <img src="./public/logoWhite.svg" alt="Logo de Acreead" className="max-w-56" />
                         <p className="text-sm font-light text-white mt-2">Innovating with the technology</p>
                     </div>
 

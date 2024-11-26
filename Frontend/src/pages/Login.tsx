@@ -17,13 +17,13 @@ const Login = () => {
         })
     }
     return (
-        <div>
-            <div className="sm:mx-auto sm:w-full sm:max-w-sm">
+        <div className="sm:mx-auto sm:w-full sm:max-w-sm sm:bg-white px-5 py-10 rounded-xl sm:shadow-xl">
+            <div >
                 <img className="mx-auto h-10 w-auto" src="../AcreeadIconBlack.svg" alt="Acreead Logo" />
                 <h2 className="mt-3 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Sign in to your account</h2>
             </div>
 
-            <div className="mt-5 sm:mx-auto sm:w-full sm:max-w-sm">
+            <div className="mt-5 sm:mx-auto sm:w-full sm:max-w-sm ">
                 <form className="space-y-6">
                     <InputContainer 
                         name='email'

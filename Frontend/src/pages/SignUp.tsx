@@ -1,4 +1,4 @@
-import { useState, ChangeEvent } from 'react'
+import { useState, ChangeEvent, useEffect, useCallback, FormEvent } from 'react'
 import { Link } from 'react-router-dom'
 import InputContainer from '../components/InputContainer'
 import AlertContainer from '../components/AlertContainer'
@@ -13,7 +13,7 @@ const SignUp = () => {
         repeat_password: ''
     })
 
-    const {  } = useAuth();
+    const { handleSignUp, state } = useAuth();
 
     const handleChange = (e : ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target
@@ -24,6 +24,24 @@ const SignUp = () => {
         })
     }
 
+    const handleSubmit = (e : FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
+
+        handleSignUp(signupForm)
+    }
+
+    const checkInfo = useCallback(() => {
+        return signupForm.password !== signupForm.repeat_password ||
+            signupForm.name === '' ||
+            signupForm.last_name === '' ||
+            signupForm.email === '' ||
+            signupForm.password === '' 
+    }, [signupForm])
+
+    useEffect(() => {
+        checkInfo()
+    }, [signupForm])
+
     return (
         <>
             <div className="sm:mx-auto sm:w-full sm:max-w-sm">
@@ -32,12 +50,14 @@ const SignUp = () => {
             </div>
 
             <div className="mt-5 sm:mx-auto sm:w-full sm:max-w-sm">
-                <AlertContainer 
-                    type={2}
-                    msg='Hubo un error'
-                />
+                {state.alert && (
+                    <AlertContainer 
+                        type={state.alert.type}
+                        msg={state.alert.msg}
+                    />
+                )}
 
-                <form className="space-y-6">
+                <form onSubmit={handleSubmit} className="space-y-3">
                     <InputContainer name='name' label='Your Name' placeholder='Name' value={signupForm.name} handleChange={handleChange} />
                     <InputContainer name='last_name' label='Your Last Name' placeholder='Last Name' value={signupForm.last_name} handleChange={handleChange} />
 
@@ -69,7 +89,11 @@ const SignUp = () => {
                     />
 
                     <div>
-                        <button type="submit" className="flex w-full transition-colors justify-center rounded-md bg-sky-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-sky-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Sign up</button>
+                        <button 
+                            type="submit" 
+                            disabled={checkInfo()}
+                            className="flex w-full transition-colors justify-center rounded-md bg-sky-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-sky-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:bg-blue-300"
+                        >Sign up</button>
                     </div>
                 </form>
 
